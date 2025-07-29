@@ -1,0 +1,22 @@
+name: PR Test Workflow
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    name: Run Pytest on PR
+
+    steps:
+      - uses: actions/checkout@v4 # Checks out your repository code
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10" # Specify your desired Python version
+      - name: Install dependencies
+        run: pip install -r requirements.txt # If you have a requirements.txt file
+      - name: Run Python script
+        run: python app.py # Replace with your script's name
